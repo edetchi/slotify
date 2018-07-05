@@ -1,8 +1,9 @@
 <?php
+	include("includes/config.php");
 	include("includes/classes/Account.php");
 	include("includes/classes/Constants.php");
 
-	$account = new Account();
+	$account = new Account($pdo);
 
 	include("includes/handlers/register-handler.php");
 	include("includes/handlers/login-handler.php");
@@ -33,7 +34,7 @@
 			</p>
 
 			<button type="submit" name="loginButton">LOG IN</button>
-			
+
 		</form>
 
 
@@ -84,7 +85,7 @@
 			</p>
 
 			<button type="submit" name="registerButton">SIGN UP</button>
-			
+
 		</form>
 
 

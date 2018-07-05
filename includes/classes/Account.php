@@ -1,9 +1,11 @@
 <?php
 	class Account {
 
+		private $pdo;
 		private $errorArray;
 
-		public function __construct() {
+		public function __construct($pdo) {
+			$this->pdo = $pdo;
 			$this->errorArray = array();
 		}
 
@@ -16,7 +18,7 @@
 
 			if(empty($this->errorArray) == true) {
 				//Insert into db
-				return true;
+				return $this->insertUserDetails($un, $fn, $ln, $em, $pw);
 			}
 			else {
 				return false;
@@ -29,6 +31,25 @@
 				$error = "";
 			}
 			return "<span class='errorMessage'>$error</span>";
+		}
+
+		private function insertUserDetails($un, $fn, $ln, $em, $pw) {
+			$encryptedPw = md5($pw);
+			$profilePic = "assets/images/profile-pics/head_emerald.png";
+			$date = date("Y-m-d");
+
+            $sql = "INSERT INTO users (username, firstName, lastName, email, password, signUpDate, profilePic) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $this->pdo->prepare($sql);
+            $data[] = $un;
+            $data[] = $fn;
+            $data[] = $ln;
+            $data[] = $em;
+            $data[] = $encryptedPw;
+            $data[] = $date;
+            $data[] = $profilePic;
+            $stmt->execute($data);
+            $pdo = null;
+
 		}
 
 		private function validateUsername($un) {
@@ -72,7 +93,7 @@
 		}
 
 		private function validatePasswords($pw, $pw2) {
-			
+
 			if($pw != $pw2) {
 				array_push($this->errorArray, Constants::$passwordsDoNoMatch);
 				return;
