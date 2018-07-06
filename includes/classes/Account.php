@@ -1,11 +1,11 @@
 <?php
 	class Account {
 
-		private $pdo;
+		private $con;
 		private $errorArray;
 
-		public function __construct($pdo) {
-			$this->pdo = $pdo;
+		public function __construct($con) {
+			$this->con = $con;
 			$this->errorArray = array();
 		}
 
@@ -18,7 +18,7 @@
 
 			if(empty($this->errorArray) == true) {
 				//Insert into db
-				return $this->insertUserDetails($un, $fn, $ln, $em, $pw);
+				return insertUserDetails($un, $fn, $ln, $em, $pw);
 			}
 			else {
 				return false;
@@ -38,18 +38,9 @@
 			$profilePic = "assets/images/profile-pics/head_emerald.png";
 			$date = date("Y-m-d");
 
-            $sql = "INSERT INTO users (username, firstName, lastName, email, password, signUpDate, profilePic) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            $stmt = $this->pdo->prepare($sql);
-            $data[] = $un;
-            $data[] = $fn;
-            $data[] = $ln;
-            $data[] = $em;
-            $data[] = $encryptedPw;
-            $data[] = $date;
-            $data[] = $profilePic;
-            $stmt->execute($data);
-            $pdo = null;
+			$result = mysqli_query($this->con, "INSERT INTO users VALUES ('', '$un', '$fn', '$ln', '$em', '$encryptedPw', '$date', '$profilePic')");
 
+			return $result;
 		}
 
 		private function validateUsername($un) {
@@ -93,7 +84,7 @@
 		}
 
 		private function validatePasswords($pw, $pw2) {
-
+			
 			if($pw != $pw2) {
 				array_push($this->errorArray, Constants::$passwordsDoNoMatch);
 				return;
