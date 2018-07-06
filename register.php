@@ -45,7 +45,7 @@
 	}
 
 	?>
-
+	
 
 	<div id="background">
 
@@ -69,7 +69,7 @@
 					<div class="hasAccountText">
 						<span id="hideLogin">Don't have an account yet? Signup here.</span>
 					</div>
-
+					
 				</form>
 
 
@@ -126,11 +126,22 @@
 					<div class="hasAccountText">
 						<span id="hideRegister">Already have an account? Log in here.</span>
 					</div>
-
+					
 				</form>
 
 
 			</div>
+
+			<div id="loginText">
+				<h1>Get great music, right now</h1>
+				<h2>Listen to loads of songs for free</h2>
+				<ul>
+					<li>Discover music you'll fall in love with</li>
+					<li>Create your own playlists</li>
+					<li>Follow artists to keep up to date</li>
+				</ul>
+			</div>
+
 		</div>
 	</div>
 
