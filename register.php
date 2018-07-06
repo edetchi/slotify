@@ -25,6 +25,28 @@
 	<script src="assets/js/register.js"></script>
 </head>
 <body>
+	<?php
+
+	if(isset($_POST['registerButton'])) {
+		echo '<script>
+				$(document).ready(function() {
+					$("#loginForm").hide();
+					$("#registerForm").show();
+				});
+			</script>';
+	}
+	else {
+		echo '<script>
+				$(document).ready(function() {
+					$("#loginForm").show();
+					$("#registerForm").hide();
+				});
+			</script>';
+	}
+
+	?>
+
+
 	<div id="background">
 
 		<div id="loginContainer">
@@ -47,7 +69,7 @@
 					<div class="hasAccountText">
 						<span id="hideLogin">Don't have an account yet? Signup here.</span>
 					</div>
-					
+
 				</form>
 
 
@@ -104,7 +126,7 @@
 					<div class="hasAccountText">
 						<span id="hideRegister">Already have an account? Log in here.</span>
 					</div>
-					
+
 				</form>
 
 

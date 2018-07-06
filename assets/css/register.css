@@ -1,4 +1,4 @@
-html, 
+html,
 body {
 	padding: 0;
 	margin: 0;
@@ -101,4 +101,9 @@ body {
 
 .hasAccountText {
 	text-align: center;
+}
+
+#registerForm,
+#loginForm {
+	display: none;
 }
