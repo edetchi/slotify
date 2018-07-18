@@ -108,7 +108,7 @@
 		}
 
 		private function validatePasswords($pw, $pw2) {
-			
+
 			if($pw != $pw2) {
 				array_push($this->errorArray, Constants::$passwordsDoNoMatch);
 				return;
