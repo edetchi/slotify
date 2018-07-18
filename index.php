@@ -3,11 +3,11 @@ include("includes/config.php");
 
 //session_destroy(); LOGOUT
 
-//ログインセッションを保有していなければ登録ページに飛ばす
-if (isset($_SESSION['userLoggedIn'])) {
-    $userLoggedIn = $_SESSION['userLoggedIn'];
-} else {
-    header("Location: register.php");
+if(isset($_SESSION['userLoggedIn'])) {
+	$userLoggedIn = $_SESSION['userLoggedIn'];
+}
+else {
+	header("Location: register.php");
 }
 
 ?>
@@ -24,6 +24,16 @@ if (isset($_SESSION['userLoggedIn'])) {
 	<div id="mainContainer">
 
 		<div id="topContainer">
+
+			<div id="navBarContainer">
+				<nav class="navBar">
+
+					<a href="index.php" class="logo">
+						<img src="assets/images/icons/logo.png">
+					</a>
+
+				</nav>
+			</div>
 
 		</div>
 
@@ -134,7 +144,7 @@ if (isset($_SESSION['userLoggedIn'])) {
 
 	</div>
 
-
+	
 
 
 </body>
