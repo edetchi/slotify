@@ -3,11 +3,11 @@ include("includes/config.php");
 
 //session_destroy(); LOGOUT
 
-if(isset($_SESSION['userLoggedIn'])) {
-	$userLoggedIn = $_SESSION['userLoggedIn'];
-}
-else {
-	header("Location: register.php");
+//ログインセッションを保有していなければ登録ページに飛ばす
+if (isset($_SESSION['userLoggedIn'])) {
+    $userLoggedIn = $_SESSION['userLoggedIn'];
+} else {
+    header("Location: register.php");
 }
 
 ?>
@@ -134,7 +134,7 @@ else {
 
 	</div>
 
-	
+
 
 
 </body>

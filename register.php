@@ -1,18 +1,21 @@
 <?php
-	include("includes/config.php");
-	include("includes/classes/Account.php");
-	include("includes/classes/Constants.php");
+include("includes/config.php");
+include("includes/classes/Account.php");
+include("includes/classes/Constants.php");
 
-	$account = new Account($con);
+//DB接続用変数$conを渡す
+$account = new Account($con);
 
-	include("includes/handlers/register-handler.php");
-	include("includes/handlers/login-handler.php");
+include("includes/handlers/register-handler.php");
+include("includes/handlers/login-handler.php");
 
-	function getInputValue($name) {
-		if(isset($_POST[$name])) {
-			echo $_POST[$name];
-		}
-	}
+//入力値があった場合、再表示。エラー時に値を再表示
+function getInputValue($name)
+{
+    if (isset($_POST[$name])) {
+        echo $_POST[$name];
+    }
+}
 ?>
 
 <html>
@@ -26,26 +29,26 @@
 </head>
 <body>
 	<?php
-
-	if(isset($_POST['registerButton'])) {
-		echo '<script>
+    //php部分のregisterButtonが押されたかどうかは、js側では受け取れないので、php側でjsをechoする
+    //registerButtonが押されたらエラー表示のため再度registerFormを表示、それ以外はloginFormを表示
+    if (isset($_POST['registerButton'])) {
+        echo '<script>
 				$(document).ready(function() {
 					$("#loginForm").hide();
 					$("#registerForm").show();
 				});
 			</script>';
-	}
-	else {
-		echo '<script>
+    } else {
+        echo '<script>
 				$(document).ready(function() {
 					$("#loginForm").show();
 					$("#registerForm").hide();
 				});
 			</script>';
-	}
+    }
 
-	?>
-	
+    ?>
+
 
 	<div id="background">
 
@@ -69,7 +72,7 @@
 					<div class="hasAccountText">
 						<span id="hideLogin">Don't have an account yet? Signup here.</span>
 					</div>
-					
+
 				</form>
 
 
@@ -126,7 +129,7 @@
 					<div class="hasAccountText">
 						<span id="hideRegister">Already have an account? Log in here.</span>
 					</div>
-					
+
 				</form>
 
 
