@@ -1,4 +1,4 @@
-<?php include("includes/header.php");
+<?php include("includes/header.php"); 
 
 if(isset($_GET['id'])) {
 	$albumId = $_GET['id'];
@@ -19,7 +19,9 @@ $artist = $album->getArtist();
 
 	<div class="rightSection">
 		<h2><?php echo $album->getTitle(); ?></h2>
-		<span>By <?php echo $artist->getName(); ?></span>
+		<p>By <?php echo $artist->getName(); ?></p>
+		<p><?php echo $album->getNumberOfSongs(); ?> songs</p>
+
 	</div>
 
 </div>
