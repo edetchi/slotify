@@ -45,6 +45,13 @@ $artist = $album->getArtist();
 						<span class='trackNumber'>$i</span>
 					</div>
 
+
+					<div class='trackInfo'>
+						<span class='trackName'>" . $albumSong->getTitle() . "</span>
+						<span class='artistName'>" . $albumArtist->getName() . "</span>
+					</div>
+
+
 				</li>";
 
 			$i = $i + 1;
